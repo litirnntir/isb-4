@@ -1,0 +1,7 @@
+{
+    "hash_file": "files/hash.txt",
+    "last_numbers_file": "files/last_numbers.txt",
+    "bins_file": "files/bins.txt",
+    "card_number_file": "files/card_number.txt",
+    "statistic_file": "files/statistic.csv"
+}
