@@ -1,5 +1,8 @@
 import hashlib
-from typing import Union
+import multiprocessing as mp
+from typing import Union, Optional
+
+from tqdm import tqdm
 
 
 def check_card_number(
@@ -23,3 +26,33 @@ def check_card_number(
         if hashlib.blake2s(card_number.encode()).hexdigest() == original_hash:
             return card_number
     return False
+
+
+def enumerate_card_num(
+        original_hash: str,
+        last_numbers: str,
+        bins: tuple,
+        pools: int
+) -> Optional[str]:
+    """
+    The function enumerates the true card number by known hash
+    :arg original_hash - hash value of desired card number
+    :arg bins - tuple of possible card BINs
+    :arg last_numbers - four last digits of desired card number
+    :arg pools - number of generated processes
+    :return: enumerated card number if it was found and None instead
+    """
+    arguments = []
+    for i in range(1000000):
+        arguments.append((i, original_hash, bins, last_numbers))
+    with mp.Pool(processes=pools) as p:
+        for result in p.starmap(
+                check_card_number,
+                tqdm(
+                    arguments,
+                    desc="The process of enumerating the true card number: ",
+                    ncols=120)):
+            if result:
+                p.terminate()
+                return result
+    return None
