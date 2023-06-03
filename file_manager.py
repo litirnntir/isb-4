@@ -126,3 +126,21 @@ class FileController:
                 f"Statistics wasn't written to the file {self.__statistic_file_path}")
             sys.exit(err)
 
+    def load_stats(self) -> dict:
+        """
+        The function loads statistics from txt file
+        :return - statistics of enumerate
+        """
+        statistics = {}
+        try:
+            with open(self.__statistic_file_path, "r") as text_file:
+                lines = text_file.readlines()
+        except OSError:
+            logging.warning(
+                f"Statistics wasn't read from the file {self.__statistic_file_path}")
+        for line in lines:
+            line = list(map(float, line.split()))
+            statistics[line[0]] = line[1]
+        logging.info(
+            f"Statistics was successfully read from the file {self.__statistic_file_path}")
+        return statistics
