@@ -92,4 +92,37 @@ class FileController:
                 f"Text wasn't written to the file {file_name}")
             sys.exit(err)
 
+    def read_bins(self) -> list:
+        """
+        Method reads the file containing bins
+        :return - bins
+        """
+        try:
+            with open(self.__bins_file_path, "r") as text_file:
+                text = text_file.readlines()
+            bins = tuple(map(int, text))
+            logging.info(
+                f"List was successfully read from file {self.__bins_file_path}")
+        except OSError as err:
+            logging.warning(
+                f"List was not read from file {self.__bins_file_path}")
+            sys.exit(err)
+        return bins
+
+    def write_statistic(self, cores: int, time: float) -> None:
+        """
+        Method appends statistic data to the end of the file
+        :arg cores - number of cores
+        :arg time - time of enumerate
+        """
+        try:
+            with open(self.__statistic_file_path, "a", newline="") as csv_file:
+                writer = csv.writer(csv_file, delimiter=" ")
+                writer.writerow([cores, time])
+            logging.info(
+                f"Statistic written to file {self.__statistic_file_path}")
+        except OSError as err:
+            logging.warning(
+                f"Statistics wasn't written to the file {self.__statistic_file_path}")
+            sys.exit(err)
 
