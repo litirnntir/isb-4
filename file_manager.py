@@ -57,3 +57,39 @@ class FileController:
             sys.exit(err)
         return settings
 
+    @staticmethod
+    def read_text(file_path: str) -> str:
+        """
+        Method reads the text file
+        :arg file_path - path to the file
+        :return: text from the file
+        """
+        try:
+            with open(file_path, "r") as text_file:
+                text = text_file.read()
+            logging.info(
+                f"Text was successfully read from the file {file_path}")
+        except OSError as err:
+            logging.warning(
+                f"Text wasn't read from the file {file_path}")
+            sys.exit(err)
+        return text
+
+    @staticmethod
+    def write_text(card_num: str, file_name: str) -> None:
+        """
+        Method writes the text into the file
+        :arg card_num - the number of card
+        :arg file_name - path to the file
+        """
+        try:
+            with open(file_name, "w") as text_file:
+                text_file.write(card_num)
+            logging.info(
+                f"Text was successfully written to the file {file_name}")
+        except OSError as err:
+            logging.warning(
+                f"Text wasn't written to the file {file_name}")
+            sys.exit(err)
+
+
