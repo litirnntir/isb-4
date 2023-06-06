@@ -1,8 +1,8 @@
 {
-    "hash_file": "140495200b351b7f18a46e3796f2875ebdf0023568933ef3b99efb285af3f06b",
-    "last_numbers_file": "2301",
-    "bins_file": "files/bins.txt",
-    "card_number_file": "files/card_number.txt",
+    "hash": "140495200b351b7f18a46e3796f2875ebdf0023568933ef3b99efb285af3f06b",
+    "last_numbers": "2301",
+    "bins": ["547905"],
+    "card_number": "files/card_number.txt",
     "statistic_file": "/Users/aleksandragorbuncova/PycharmProjects/isb-4/files/statistic.csv",
     "visual_directory": "/Users/aleksandragorbuncova/PycharmProjects/isb-4/files"
 }

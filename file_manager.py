@@ -16,10 +16,10 @@ class FileController:
         :arg json_file - Path to .json file
         """
         settings = self.__read_settings(json_file)
-        self.__hash_file_path = settings["hash_file"]
-        self.__last_numbers_file_path = settings["last_numbers_file"]
-        self.__bins_file_path = settings["bins_file"]
-        self.__card_num_file_path = settings["card_number_file"]
+        self.__hash_file_path = settings["hash"]
+        self.__last_numbers_file_path = settings["last_numbers"]
+        self.__bins_file_path = settings["bins"]
+        self.__card_num_file_path = settings["card_number"]
         self.__statistic_file_path = settings["statistic_file"]
         self.__visual_directory = settings["visual_directory"]
 
@@ -98,9 +98,7 @@ class FileController:
         :return - bins
         """
         try:
-            with open(self.__bins_file_path, "r") as text_file:
-                text = text_file.readlines()
-            bins = tuple(map(int, text))
+            bins = tuple(map(int, self.__bins_file_path))
             logging.info(
                 f"List was successfully read from file {self.__bins_file_path}")
         except OSError as err:
