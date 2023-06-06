@@ -16,24 +16,29 @@ class FileController:
         :arg json_file - Path to .json file
         """
         settings = self.__read_settings(json_file)
-        self.__hash_file_path = settings["hash"]
-        self.__last_numbers_file_path = settings["last_numbers"]
-        self.__bins_file_path = settings["bins"]
-        self.__card_num_file_path = settings["card_number"]
+        self.__hash_path = settings["hash"]
+        self.__last_numbers_path = settings["last_numbers"]
+        self.__bins_path = settings["bins"]
+        self.__card_num_file_path = settings["card_number_file"]
         self.__statistic_file_path = settings["statistic_file"]
         self.__visual_directory = settings["visual_directory"]
+        self.__luhn_result = settings["luhn_result"]
 
     @property
     def hash_file_path(self) -> str:
-        return self.__hash_file_path
+        return self.__hash_path
 
     @property
     def last_num_file_path(self) -> str:
-        return self.__last_numbers_file_path
+        return self.__last_numbers_path
 
     @property
     def card_num_file_path(self) -> str:
         return self.__card_num_file_path
+
+    @property
+    def luhn_result(self) -> str:
+        return self.__luhn_result
 
     @property
     def visual_directory(self) -> str:
@@ -98,12 +103,12 @@ class FileController:
         :return - bins
         """
         try:
-            bins = tuple(map(int, self.__bins_file_path))
+            bins = tuple(map(int, self.__bins_path))
             logging.info(
-                f"List was successfully read from file {self.__bins_file_path}")
+                f"List was successfully read from file {self.__bins_path}")
         except OSError as err:
             logging.warning(
-                f"List was not read from file {self.__bins_file_path}")
+                f"List was not read from file {self.__bins_path}")
             sys.exit(err)
         return bins
 

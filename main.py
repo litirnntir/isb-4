@@ -70,10 +70,12 @@ def main():
             logging.info("The card number wasn't found")
     elif args.luhn:
         card_number = files.read_text(files.card_num_file_path)
-        if luhn_algorithm(card_number):
+        luhn_result = luhn_algorithm(card_number)
+        if luhn_result:
             logging.info("The card number is correct")
         else:
             logging.info("The card number isn't correct")
+        files.write_text(card_number + " " + str(luhn_result), files.luhn_result)
     elif args.visualization:
         stats = files.load_stats()
         visualize_statistics(stats, files.visual_directory)
