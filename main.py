@@ -55,8 +55,8 @@ def main():
     args = parser.parse_args()
     files = FileController(args.settings) if args.settings else FileController()
     if args.enumeration:
-        hash_file = files.read_text(files.hash_file_path)
-        last_num = files.read_text(files.last_num_file_path)
+        hash_file = files.hash_file_path
+        last_num = files.last_num_file_path
         bins = files.read_bins()
         start = time.perf_counter()
         card_num = enumerate_card_num(hash_file, last_num, bins, args.enumeration)
