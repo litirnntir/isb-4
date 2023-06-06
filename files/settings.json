@@ -4,6 +4,7 @@
     "bins": ["547905"],
     "card_number_file": "files/card_number.txt",
     "statistic_file": "/Users/aleksandragorbuncova/PycharmProjects/isb-4/files/statistic.csv",
+    "statistics_photo": "/Users/aleksandragorbuncova/PycharmProjects/isb-4/files/statistics.jpg",
     "visual_directory": "/Users/aleksandragorbuncova/PycharmProjects/isb-4/files",
     "luhn_result": "/Users/aleksandragorbuncova/PycharmProjects/isb-4/files/luhn_result.txt"
 }

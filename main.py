@@ -78,7 +78,7 @@ def main():
         files.write_text(card_number + " " + str(luhn_result), files.luhn_result)
     elif args.visualization:
         stats = files.load_stats()
-        visualize_statistics(stats, files.visual_directory)
+        visualize_statistics(stats, files.visual_directory, files.statistics_photo)
 
 
 if __name__ == "__main__":

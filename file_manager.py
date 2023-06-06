@@ -23,6 +23,7 @@ class FileController:
         self.__statistic_file_path = settings["statistic_file"]
         self.__visual_directory = settings["visual_directory"]
         self.__luhn_result = settings["luhn_result"]
+        self.__statistics_photo = settings["statistics_photo"]
 
     @property
     def hash_file_path(self) -> str:
@@ -43,6 +44,10 @@ class FileController:
     @property
     def visual_directory(self) -> str:
         return self.__visual_directory
+
+    @property
+    def statistics_photo(self) -> str:
+        return self.__statistics_photo
 
     @staticmethod
     def __read_settings(settings_file: str) -> dict:
